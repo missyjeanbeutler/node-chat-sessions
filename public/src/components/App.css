@@ -6,11 +6,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 800px;
+  /* min-height: 800px; */
   height: 100vh;
 }
 
 #App__container {
-  height: 780px;
-  width: 1420px;
+  height: 100vh;
+  width: 100vw;
 }
