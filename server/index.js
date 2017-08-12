@@ -16,9 +16,18 @@ app.use( session({
   cookie: { maxAge: 10000 }
 }));
 
-app.use((req, res, next) => {
-  createInitialSession(req, res, next)
-},
+// app.use((req, res, next) => {
+//   createInitialSession(req, res, next)
+// },
+// (req, res, next) => {
+//   const { method } = req;
+//   if ( method === "POST" || method === "PUT" ) {
+//     filter( req, res, next );
+//   } else {
+//     next();
+//   }
+// })
+app.use(createInitialSession,
 (req, res, next) => {
   const { method } = req;
   if ( method === "POST" || method === "PUT" ) {
@@ -27,6 +36,8 @@ app.use((req, res, next) => {
     next();
   }
 })
+
+
 const messagesBaseUrl = "/api/messages";
 app.post( messagesBaseUrl, mc.create );
 app.get( messagesBaseUrl, mc.read );
